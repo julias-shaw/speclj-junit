@@ -6,15 +6,19 @@ speclj-junit is a plugin for [speclj](http://speclj.com/) that formats output us
 
 If you use [leiningen](https://github.com/technomancy/leiningen), add the following to your project.clj under the :dev profile:
 
-    :dependencies [[speclj-junit "0.0.1"]]
+    :dependencies [[speclj-junit "0.0.5"]]
 
-As of version 2.1.0, speclj 2.7.x is required.
+As of version 0.0.1, speclj 2.7.x is required.
 
 ## Usage
 
-Add `-f junit` to lein spec to show output in growl. For example, this will start autotest with both terminal and growl output:
+Add `-f junit` to lein spec to output spec results in Ant's [JUnitReport task](https://ant.apache.org/manual/Tasks/junitreport.html) format.
 
     lein spec -f junit
+
+##
+
+Many thanks to Paul Gross for his [speclj-growl](https://github.com/pgr0ss/speclj-growl) project for a great example of writing speclj plugins.
 
 ## License
 
