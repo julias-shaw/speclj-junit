@@ -4,15 +4,9 @@ speclj-junit is a plugin for [speclj](http://speclj.com/) that formats output us
 
 ## Installation
 
-This plugin is not yet ready for prime time. Until it is you will need to manually install it using:
-
-    git clone https://github.com/julias-shaw/speclj-junit.git
-    cd speclj-junit
-    lein install
-
 Add the following to your project.clj under the :dev profile:
 
-    :dependencies [[speclj-junit "0.0.6"]]
+    :dependencies [[speclj-junit "0.0.9"]]
 
 Speclj 2.7.x or later is required.
 
@@ -21,6 +15,12 @@ Speclj 2.7.x or later is required.
 Add `-f junit` to lein spec to output spec results in Ant's [JUnitReport task](https://ant.apache.org/manual/Tasks/junitreport.html) format.
 
     lein spec -f junit
+
+This will write a junit.xml file to target that is suitable for integration with Jenkins and such.
+
+## TODO
+
+* Make output file configurable
 
 ## Thanks
 
