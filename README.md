@@ -4,13 +4,15 @@ speclj-junit is a plugin for [speclj](http://speclj.com/) that formats output us
 
 ## Installation
 
-If you use [leiningen](https://github.com/technomancy/leiningen), add the following to your project.clj under the :dev profile:
-
-    :dependencies [[speclj-junit "0.0.5"]]
-
 This plugin is not yet ready for prime time. Until it is you will need to manually install it using:
 
+    git clone https://github.com/julias-shaw/speclj-junit.git
+    cd speclj-junit
     lein install
+
+Add the following to your project.clj under the :dev profile:
+
+    :dependencies [[speclj-junit "0.0.5"]]
 
 Speclj 2.7.x or later is required.
 
