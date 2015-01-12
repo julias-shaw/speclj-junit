@@ -107,8 +107,11 @@
   (report-pending [this result])
   (report-fail [this result])
   (report-runs [this results]
-               (println (xml/emit-str (runs->xml results))))
+               (with-open [out-file (java.io.OutputStreamWriter. (java.io.FileOutputStream. "./target/junit.xml") "UTF-8")]
+                 (xml/emit (runs->xml results) out-file)))
   (report-error [this exception]
-                (println (xml/emit-str (error->xml exception)))))
+               (with-open [out-file (java.io.OutputStreamWriter. (java.io.FileOutputStream. "./target/junit.xml") "UTF-8")]
+                 (xml/emit (error->xml exception) out-file))))
+
 (defn new-junit-reporter []
   (JUnitReporter. (atom 0) (atom 0) (atom nil)))
