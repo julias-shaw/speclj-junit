@@ -12,7 +12,7 @@ This plugin is not yet ready for prime time. Until it is you will need to manual
 
 Add the following to your project.clj under the :dev profile:
 
-    :dependencies [[speclj-junit "0.0.5"]]
+    :dependencies [[speclj-junit "0.0.6"]]
 
 Speclj 2.7.x or later is required.
 
