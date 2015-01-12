@@ -16,7 +16,7 @@ Add `-f junit` to lein spec to output spec results in Ant's [JUnitReport task](h
 
     lein spec -f junit
 
-##
+## Thanks
 
 Many thanks to Paul Gross for his [speclj-growl](https://github.com/pgr0ss/speclj-growl) project for a great example of writing speclj plugins.
 
