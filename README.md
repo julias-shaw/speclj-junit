@@ -8,7 +8,11 @@ If you use [leiningen](https://github.com/technomancy/leiningen), add the follow
 
     :dependencies [[speclj-junit "0.0.5"]]
 
-As of version 0.0.1, speclj 2.7.x is required.
+This plugin is not yet ready for prime time. Until it is you will need to manually install it using:
+
+    lein install
+
+Speclj 2.7.x or later is required.
 
 ## Usage
 
