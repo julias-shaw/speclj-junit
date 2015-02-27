@@ -32,6 +32,9 @@
 (defn now []
   (t/now))
 
+(defn failure-message [failure]
+  (.getMessage failure))
+
 (defn- pass->xml [result]
   (swap! pass-count inc)
   (let [characteristic (.-characteristic result)
@@ -55,7 +58,7 @@
         seconds (format-seconds (.-seconds result))
         failure (.-failure result)]
     (xml/element :testcase {:classname spec-name :name spec-name :time seconds}
-                 (xml/element :failure {:message "test failure"} failure))))
+                 (xml/element :failure {:message "test failure"} (failure-message failure)))))
 
 (defn- result->xml [result]
   (cond
