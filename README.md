@@ -6,7 +6,7 @@ speclj-junit is a plugin for [speclj](http://speclj.com/) that formats output us
 
 Add the following to your project.clj under the :dev profile:
 
-    :dependencies [[speclj-junit "0.0.9"]]
+    :dependencies [[speclj-junit "0.0.10"]]
 
 Speclj 2.7.x or later is required.
 
