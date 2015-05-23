@@ -1,4 +1,4 @@
-(defproject speclj-junit "0.0.9"
+(defproject speclj-junit "0.0.10s"
   :description "JUnit xml reporter for the speclj testing framework"
   :url "https://github.com/julias-shaw/speclj-junit"
   :scm {:name "git"
