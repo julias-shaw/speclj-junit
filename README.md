@@ -1,14 +1,14 @@
 # speclj-growl
 
-speclj-junit is a plugin for [speclj](http://speclj.com/) that formats output using ant's junit xml format. This format is commonly used by continuous integration tools.
+`speclj-junit` is a plugin for [speclj](http://speclj.com/) that formats output using ant's junit XML format. This format is commonly used by continuous integration tools.
 
 ## Installation
 
 Add the following to your project.clj under the :dev profile:
 
-    :dependencies [[speclj-junit "0.0.10"]]
+    :dependencies [[speclj-junit "0.0.11"]]
 
-Speclj 2.7.x or later is required.
+Speclj 3.3.x or later is required.
 
 ## Usage
 
@@ -28,6 +28,6 @@ Many thanks to Paul Gross for his [speclj-growl](https://github.com/pgr0ss/specl
 
 ## License
 
-Copyright (C) 2015 Julias Shaw
+Copyright (C) 2015-2016 Julias Shaw
 
 Distributed under the The MIT License.

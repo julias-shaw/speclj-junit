@@ -73,7 +73,7 @@
   (it "report-runs"
    (let [_ (report-runs @reporter [(pass-result (new-characteristic "passing spec name" nil) 1.00040)
                                    (pending-result (new-characteristic "pending spec name" nil) 1.00050 "Not yet implemented")
-                                   (fail-result (new-characteristic "failing spec name" nil) 1.00060 (speclj.platform/new-failure "Typo"))])
+                                   (fail-result (new-characteristic "failing spec name" nil) 1.00060 (speclj.core/-new-failure "Typo"))])
          output (junit-xml-as-string)]
      (should= "<?xml version=\"1.0\" encoding=\"UTF-8\"?><testsuites><testsuite name=\"speclj\" errors=\"0\" skipped=\"1\" tests=\"3\" failures=\"1\" time=\"3.00150\" timestamp=\"1972-04-19T07:23:06.025Z\"><testcase classname=\"passing spec name\" name=\"passing spec name\" time=\"1.00040\"></testcase><testcase classname=\"pending spec name\" name=\"pending spec name\" time=\"1.00050\"><skipped></skipped></testcase><testcase classname=\"failing spec name\" name=\"failing spec name\" time=\"1.00060\"><failure message=\"test failure\">Typo</failure></testcase></testsuite></testsuites>"
               output)))
@@ -86,5 +86,3 @@
 
   )
  )
-
-
