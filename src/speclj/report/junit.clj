@@ -8,9 +8,10 @@
             [clojure.pprint :refer [pprint]]
             [clojure.data.xml :as xml]
             [clj-time.core :as t])
-  (:import [speclj.results PassResult FailResult PendingResult]))
+  (:import [speclj.results PassResult FailResult PendingResult ErrorResult]))
 
 (def pass-count (atom 0))
+(def error-count (atom 0))
 (def fail-count (atom 0))
 (def skipped-count (atom 0))
 
@@ -19,6 +20,7 @@
 
 (defn- reset-counters []
   (clear-atom pass-count)
+  (clear-atom error-count)
   (clear-atom fail-count)
   (clear-atom skipped-count))
 
@@ -34,6 +36,9 @@
 
 (defn failure-message [failure]
   (.getMessage failure))
+
+(defn stack-trace-to-str [exception]
+  (map (partial str "\n") (.getStackTrace exception)))
 
 (defn- pass->xml [result]
   (swap! pass-count inc)
@@ -60,6 +65,16 @@
     (xml/element :testcase {:classname spec-name :name spec-name :time seconds}
                  (xml/element :failure {:message "test failure"} (failure-message failure)))))
 
+(defn- error-result->xml [result]
+   (swap! error-count inc)
+   (let [exception (.-exception result)
+         class-name (.getCanonicalName (.getClass exception))
+         message (.getMessage exception)
+         stacktrace (stack-trace-to-str exception)
+         seconds (format-seconds (.-seconds result))]
+        (xml/element :testcase {:classname class-name :name class-name :time seconds}
+          (xml/element :error {:message message} stacktrace))))
+
 (defn- result->xml [result]
   (cond
    (= speclj.results.PassResult (type result))
@@ -71,6 +86,9 @@
    (= speclj.results.FailResult (type result))
    (fail->xml result)
 
+   (= speclj.results.ErrorResult (type result))
+   (error-result->xml result)
+
    :else
    (println (str "Unknown result type: " (type result)))))
 
@@ -79,7 +97,7 @@
   (let [xml-results (doall (map result->xml results))]
     (xml/element :testsuites {}
                  (xml/element :testsuite {:name "speclj"
-                                          :errors 0
+                                          :errors @error-count
                                           :skipped @skipped-count
                                           :tests (test-count)
                                           :failures @fail-count
